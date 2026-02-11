@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: linear-gradient(to bottom, #ffebee, #f8bbd0);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            color: #d32f2f;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1.2em;
+            margin: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        #yes {
+    background: #4caf50;
+    color: white;
+    font-size: 1.2em;
+    padding: 12px 24px;
+    transition: all 0.4s;
+}
+#yes:hover {
+    background: #388e3c;
+    transform: scale(1.2);
+    padding: 16px 32px;
+}
+        #no {
+            background: #f44336;
+            color: white;
+            position: relative;
+        }
+        #no:hover {
+            background: #d32f2f;
+        }
+    </style>
+</head>
+<body>
+    <h1>Caarol, will you be my Valentine? ❤️</h1>
+    <button id="yes" onclick="alert('Yay! I love you so muchooo Mi Amor')">Yes</button>
+    <button id="no" onmouseover="moveAway()">No</button>
+
+    <script>
+        function moveAway() {
+            const button = document.getElementById('no');
+            button.style.position = 'absolute';
+            const maxX = window.innerWidth - button.offsetWidth - 20;
+            const maxY = window.innerHeight - button.offsetHeight - 20;
+            button.style.left = Math.floor(Math.random() * maxX) + 'px';
+            button.style.top = Math.floor(Math.random() * maxY) + 'px';
+        }
+
+        
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script>
+        function shootHearts() {
+            confetti({
+                particleCount: 80,
+                angle: 90,
+                spread: 45,
+                origin: { y: 0.6 },
+                colors: ['#ff69b4', '#ff1493', '#db7093', '#ffb6c1'],
+                shapes: ['heart']
+            });
+        }
+        // Auto hearts when page loads + more on Yes
+        setInterval(shootHearts, 2500);
+        document.getElementById('yes').addEventListener('click', () => {
+            for(let i = 0; i < 5; i++) {
+                setTimeout(shootHearts, i * 300);
+            }
+        });
+    </script>
+</body>
+</html>

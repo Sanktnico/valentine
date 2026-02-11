@@ -50,10 +50,17 @@
         #no:hover {
             background: #d32f2f;
         }
+
+        #pickup-line {
+    transition: opacity 0.5s ease-in-out;
+}
     </style>
 </head>
 <body>
     <h1>Caarol, will you be my Valentine? ❤️</h1>
+    <p id="pickup-line" style="font-size: 1.4em; margin: 25px 10px; color: #c2185b; font-style: italic; min-height: 60px;">
+  Loading a cheesy line for you...
+</p>
     <button id="yes" onclick="alert('Yay! I love you so muchooo Mi Amor')">Yes</button>
     <button id="no" onmouseover="moveAway()">No</button>
 
@@ -89,5 +96,61 @@
             }
         });
     </script>
+
+    <script>
+    const pickupLines = [
+        "Are you a loan from a bank? Because you have my interest! 💸",
+        "Do you have a Band-Aid? I just scraped my knee falling for you... again. 🩹",
+        "If beauty were time, you'd be an eternity. ⏳",
+        "Are you a keyboard? Because you're just my type. ⌨️",
+        "Do you like raisins? How do you feel about a date? 🍇",
+        "Is your dad a boxer? Because you're a knockout! 🥊",
+        "Are you Australian? Because you meet all of my koalafications. 🐨",
+        "Do you play soccer? Because you're a keeper! ⚽",
+        "If you were words on a page, you'd be fine print. 📜",
+        "Are you a time traveler? Because I see you in my future. ⏰",
+        "Do you have a sunburn, or are you always this hot? 🔥",
+        "Are you a cat? Because I'm feline a connection. 🐱",
+        "If I were a cat I'd spend all 9 lives with you. 😻",
+        "Are you a volcano? Because I lava you! 🌋",
+        "Do you like science? Because I've got my ion you! ⚛️",
+        "Are you a ninja? Because you snuck into my heart. 🥷",
+        "If kisses were snowflakes, I'd send you a blizzard. ❄️",
+        "Are you a dictionary? Because you add meaning to my life. 📖",
+        "Do you have Wi-Fi? Because I'm feeling a connection... wait, I already used that one. 📡",
+        "Are you a 90-degree angle? Because you're looking right! 📐",
+        "If you were a fruit, you'd be a fine-apple. 🍍",
+        "Are you a camera? Every time I look at you, I smile. 📸",
+        "Do you believe in fate? Because I think we just clicked. 🖱️",
+        "Are you Google? Because you've got everything I've been searching for. 🔍",
+        "If I had a star for every time you brightened my day, I'd have a galaxy. 🌌",
+        "Are you a bank loan? Because you got my interest... and now I'm broke without you. 🏦",
+        "Do you have an eraser? Because I can't get you out of my head. 🧼",
+        "Are you French fries? Because I'd ketchup with you any day. 🍟",
+        "If we were socks, we'd make a great pair. 🧦",
+        "Are you a beaver? Cuz daaaaam girl. 🦫"
+    ];
+
+    let currentIndex = 0;
+
+    function showNextPickupLine() {
+        const lineElement = document.getElementById('pickup-line');
+        if (lineElement) {
+            // Optional: fade out / fade in effect
+            lineElement.style.opacity = '0';
+            setTimeout(() => {
+                lineElement.textContent = pickupLines[currentIndex];
+                lineElement.style.opacity = '1';
+            }, 500); // matches the CSS transition time below
+        }
+        currentIndex = (currentIndex + 1) % pickupLines.length;
+    }
+
+    // Show first line immediately
+    showNextPickupLine();
+
+    // Change every 6 seconds (adjust the number if you want faster/slower)
+    setInterval(showNextPickupLine, 6000);
+</script>
 </body>
 </html>
